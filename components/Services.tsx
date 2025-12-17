@@ -8,24 +8,28 @@ const services: Service[] = [
     title: 'Construction & Renovation',
     description: 'Full-service execution from demolition to finishing touches. We manage the dust so you don\'t have to.',
     iconName: 'Hammer',
+    imageUrl: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop',
   },
   {
     id: '2',
     title: 'Custom Furniture',
     description: 'Bespoke pieces designed and crafted to fit your space perfectly. From industrial steel to warm teak.',
     iconName: 'Box',
+    imageUrl: '/images/custom-furniture.jpg',
   },
   {
     id: '3',
     title: '3D Modelling',
     description: 'Visualize your future space before a single brick is laid. High-fidelity renders and walkthroughs.',
     iconName: 'LayoutTemplate',
+    imageUrl: '/images/3d-modelling.png',
   },
   {
     id: '4',
     title: 'Interior Styling',
     description: 'The final layer. Curating textiles, art, and lighting to transform a house into a home.',
     iconName: 'Ruler',
+    imageUrl: '/images/interior-styling.jpg',
   },
 ];
 
@@ -52,16 +56,52 @@ export const Services: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {services.map((service) => {
+        {/* Expanding Curtains Layout */}
+        <div className="group/curtains flex flex-col lg:flex-row min-h-[600px] w-full bg-stone-900 shadow-2xl overflow-hidden rounded-xl">
+          {services.map((service, index) => {
             const Icon = IconMap[service.iconName];
             return (
-              <div key={service.id} className="group p-6 md:p-8 bg-white border border-stone-200 hover:border-rust-600/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
-                <div className="w-12 h-12 bg-stone-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-rust-50 transition-colors">
-                  <Icon className="text-stone-700 group-hover:text-rust-700 transition-colors" size={24} />
+              <div
+                key={service.id}
+                className="group relative flex-1 hover:flex-[3] flex flex-col justify-end p-6 md:p-10 border-b lg:border-b-0 lg:border-r border-stone-800 last:border-0 transition-all duration-1000 ease-[cubic-bezier(0.25,0.76,0.36,0.98)] overflow-hidden cursor-pointer group-hover/curtains:brightness-50 group-hover/curtains:hover:brightness-100"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <img
+                    src={service.imageUrl}
+                    alt={service.title}
+                    className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0 transform group-hover:scale-105"
+                  />
+                  {/* Dark Gradient Overlay - Fades out significantly on hover for HD look */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/50 to-stone-900/20 opacity-90 group-hover:opacity-30 transition-opacity duration-1000" />
                 </div>
-                <h3 className="text-lg md:text-xl font-medium text-stone-900 mb-3">{service.title}</h3>
-                <p className="text-stone-500 text-sm leading-relaxed">{service.description}</p>
+
+                {/* Content Wrapper */}
+                <div className="relative z-10 w-full h-full flex flex-col justify-between">
+                  {/* Top Section: Number */}
+                  <div className="flex justify-between items-start w-full transform transition-all duration-700 delay-100 group-hover:translate-y-0">
+                    <span className="text-4xl font-serif font-light text-white/60 group-hover:text-rust-400 transition-colors duration-500">
+                      0{index + 1}
+                    </span>
+                  </div>
+
+                  <div className="mt-auto transform transition-transform duration-700 group-hover:translate-y-0">
+                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-4 leading-tight min-w-[180px] drop-shadow-lg">
+                      {service.title}
+                    </h3>
+
+                    <div className="max-h-0 opacity-0 group-hover:max-h-[300px] group-hover:opacity-100 transition-all duration-700 ease-out overflow-hidden">
+                      <p className="text-stone-200 text-lg leading-relaxed mb-6 border-l-2 border-rust-500 pl-4">
+                        {service.description}
+                      </p>
+
+                      <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium tracking-widest uppercase hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-white/40 group-hover/btn:gap-3">
+                        <span>Explore Service</span>
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}

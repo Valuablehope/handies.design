@@ -6,49 +6,51 @@ export const Hero: React.FC = () => {
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          {/* High-quality interior design video: Modern living room with industrial touches */}
-          <source 
-            src="https://videos.pexels.com/video-files/7578552/7578552-hd_1920_1080_30fps.mp4" 
-            type="video/mp4" 
-          />
-          Your browser does not support the video tag.
-        </video>
-        
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-stone-900/30 mix-blend-multiply" />
-        
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover video-bg scale-105"
+          >
+            {/* High-quality interior design video: Modern living room with industrial touches */}
+            <source
+              src="https://videos.pexels.com/video-files/7578552/7578552-hd_1920_1080_30fps.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        {/* Dark overlay for text readability - Refined */}
+        <div className="absolute inset-0 bg-stone-900/40 mix-blend-multiply" />
+
         {/* Gradient for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-stone-900/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-stone-900/20" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center md:text-left w-full pt-12 md:pt-0">
-        <h1 className="text-stone-100 font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-tight mb-6 tracking-tight drop-shadow-lg">
+        <h1 className="text-stone-50 font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[1.1] mb-8 tracking-tight drop-shadow-2xl animate-fade-in-up opacity-0">
           Making Space, <br />
-          <span className="italic text-stone-200">Livable.</span>
+          <span className="italic text-stone-200 font-light">Livable.</span>
         </h1>
-        
-        <p className="text-stone-200 text-base sm:text-lg md:text-xl max-w-lg mx-auto md:mx-0 font-light mb-8 md:mb-10 leading-relaxed drop-shadow-md">
+
+        <p className="text-stone-200/90 text-lg sm:text-xl md:text-2xl max-w-xl mx-auto md:mx-0 font-light mb-12 leading-relaxed drop-shadow-lg animate-fade-in-up delay-200 opacity-0">
           Where raw edge meets refined comfort. We fuse industrial bones with modern soul to create bespoke environments.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start animate-fade-in-up delay-300 opacity-0">
           <a
             href="#portfolio"
-            className="px-8 py-4 bg-white text-stone-900 font-medium tracking-wide hover:bg-stone-100 transition-colors text-center shadow-lg"
+            className="px-10 py-4 bg-stone-50 text-stone-900 font-medium tracking-wide hover:bg-white hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="px-8 py-4 border border-white/40 text-white font-medium tracking-wide hover:bg-white/10 transition-colors backdrop-blur-sm text-center"
+            className="px-10 py-4 border border-white/30 text-white font-medium tracking-wide hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm text-center rounded-sm"
           >
             Book Consultation
           </a>
@@ -56,8 +58,10 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce text-white/70">
-        <ArrowDown size={24} />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce text-white/50 hover:text-white transition-colors cursor-pointer animate-fade-in delay-500 opacity-0">
+        <a href="#about" aria-label="Scroll down">
+          <ArrowDown size={32} strokeWidth={1.5} />
+        </a>
       </div>
     </section>
   );
