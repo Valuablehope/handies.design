@@ -43,14 +43,16 @@ export const Hero: React.FC = () => {
 
         <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start animate-fade-in-up delay-300 opacity-0">
           <a
-            href="#portfolio"
-            className="px-10 py-4 bg-stone-50 text-stone-900 font-medium tracking-wide hover:bg-white hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
+            href="#services"
+            className="inline-block min-w-[220px] px-10 py-4 bg-white text-stone-900 font-medium tracking-wide hover:bg-stone-50 hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
           >
             View Projects
           </a>
           <a
-            href="#contact"
-            className="px-10 py-4 border border-white/30 text-white font-medium tracking-wide hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm text-center rounded-sm"
+            href="https://wa.me/96170228056"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block min-w-[220px] px-10 py-4 bg-white text-stone-900 font-medium tracking-wide hover:bg-stone-50 hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
           >
             Book Consultation
           </a>

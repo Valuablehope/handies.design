@@ -13,21 +13,30 @@ export default {
                 serif: ['Playfair Display', 'serif'],
             },
             colors: {
+                theme: {
+                    bg: 'var(--theme-bg)',
+                    text: 'var(--theme-text)',
+                    accent: 'var(--theme-accent)',
+                    'accent-hover': 'var(--theme-accent-hover)',
+                    secondary: 'var(--theme-secondary)',
+                    surface: 'var(--theme-surface)',
+                    border: 'var(--theme-border)',
+                },
                 stone: {
-                    50: '#fafaf9',
-                    100: '#f5f5f4',
-                    200: '#e7e5e4',
+                    50: 'var(--theme-bg)',
+                    100: 'var(--theme-surface)',
+                    200: 'var(--theme-border)',
                     300: '#d6d3d1',
-                    400: '#a8a29e',
-                    500: '#78716c',
+                    400: 'var(--theme-secondary)',
+                    500: 'var(--theme-secondary)',
                     600: '#57534e',
                     700: '#44403c',
                     800: '#292524',
-                    900: '#1c1917',
+                    900: 'var(--theme-text)',
                 },
                 rust: {
-                    500: '#c2410c',
-                    600: '#9a3412',
+                    500: 'var(--theme-accent)',
+                    600: 'var(--theme-accent-hover)',
                     700: '#7c2d12',
                 }
             }

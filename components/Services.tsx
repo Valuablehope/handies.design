@@ -42,69 +42,77 @@ const IconMap: Record<string, React.FC<any>> = {
 
 export const Services: React.FC = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-stone-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="mb-12 md:mb-16 md:flex md:justify-between md:items-end border-b border-stone-300 pb-8">
-          <div className="max-w-xl">
-            <span className="text-rust-700 font-medium tracking-widest uppercase text-xs mb-2 block">Our Expertise</span>
-            <h2 className="text-3xl md:text-5xl font-serif text-stone-900">
-              Comprehensive Design <span className="italic text-stone-500">Solutions</span>
-            </h2>
+    <section id="services" className="pt-12 pb-28 bg-theme-bg relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+
+        {/* Main Expertise Container Card */}
+        <div className="bg-white/70 backdrop-blur-2xl p-10 lg:p-20 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] rounded-sm border border-white/40">
+
+          <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-12 border-l-4 border-theme-accent pl-10">
+            <div className="max-w-xl">
+              <span className="text-theme-accent font-semibold tracking-[0.5em] uppercase text-[10px] mb-6 block">Our Expertise</span>
+              <h2 className="text-5xl md:text-7xl font-serif text-theme-text leading-tight tracking-tight">
+                Comprehensive <br />
+                <span className="italic text-theme-secondary">Design Solutions</span>
+              </h2>
+            </div>
+            <div className="max-w-sm">
+              <p className="text-theme-secondary/80 text-lg font-light leading-relaxed mb-8">
+                We don't just design; we build. Our integrated approach ensures the vision on paper matches the physical reality on site.
+              </p>
+              <div className="w-16 h-[1px] bg-theme-accent/50" />
+            </div>
           </div>
-          <p className="mt-6 md:mt-0 text-stone-600 max-w-sm text-sm leading-relaxed">
-            We don't just design; we build. Our integrated approach ensures the vision on paper matches the reality on site.
-          </p>
-        </div>
 
-        {/* Expanding Curtains Layout */}
-        <div className="group/curtains flex flex-col lg:flex-row min-h-[600px] w-full bg-stone-900 shadow-2xl overflow-hidden rounded-xl">
-          {services.map((service, index) => {
-            const Icon = IconMap[service.iconName];
-            return (
-              <div
-                key={service.id}
-                className="group relative flex-1 hover:flex-[3] flex flex-col justify-end p-6 md:p-10 border-b lg:border-b-0 lg:border-r border-stone-800 last:border-0 transition-all duration-1000 ease-[cubic-bezier(0.25,0.76,0.36,0.98)] overflow-hidden cursor-pointer group-hover/curtains:brightness-50 group-hover/curtains:hover:brightness-100"
-              >
-                {/* Background Image */}
-                <div className="absolute inset-0">
-                  <img
-                    src={service.imageUrl}
-                    alt={service.title}
-                    className="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0 transform group-hover:scale-105"
-                  />
-                  {/* Dark Gradient Overlay - Fades out significantly on hover for HD look */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/50 to-stone-900/20 opacity-90 group-hover:opacity-30 transition-opacity duration-1000" />
-                </div>
-
-                {/* Content Wrapper */}
-                <div className="relative z-10 w-full h-full flex flex-col justify-between">
-                  {/* Top Section: Number */}
-                  <div className="flex justify-between items-start w-full transform transition-all duration-700 delay-100 group-hover:translate-y-0">
-                    <span className="text-4xl font-serif font-light text-white/60 group-hover:text-rust-400 transition-colors duration-500">
-                      0{index + 1}
-                    </span>
+          {/* Expanding Curtains Layout */}
+          <div className="group/curtains flex flex-col lg:flex-row min-h-[600px] w-full bg-theme-text shadow-2xl overflow-hidden rounded-sm border border-white/5">
+            {services.map((service, index) => {
+              const Icon = IconMap[service.iconName];
+              return (
+                <div
+                  key={service.id}
+                  className="group relative flex-1 hover:flex-[4] flex flex-col justify-end p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-white/10 last:border-0 transition-all duration-1000 ease-[cubic-bezier(0.25,0.76,0.36,0.98)] overflow-hidden cursor-pointer group-hover/curtains:brightness-50 group-hover/curtains:hover:brightness-100"
+                >
+                  {/* Background Image with Parallax Scale */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={service.imageUrl}
+                      alt={service.title}
+                      className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0 transform group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-90 group-hover:opacity-40 transition-opacity duration-1000" />
                   </div>
 
-                  <div className="mt-auto transform transition-transform duration-700 group-hover:translate-y-0">
-                    <h3 className="text-2xl md:text-3xl font-serif text-white mb-4 leading-tight min-w-[180px] drop-shadow-lg">
-                      {service.title}
-                    </h3>
+                  {/* Content Wrapper */}
+                  <div className="relative z-10 w-full h-full flex flex-col justify-between">
+                    <div className="flex justify-between items-start w-full">
+                      <span className="text-5xl font-serif font-light text-white/40 group-hover:text-theme-accent transition-colors duration-500">
+                        0{index + 1}
+                      </span>
+                      {Icon && <Icon size={24} className="text-white/20 group-hover:text-theme-accent transition-colors duration-500" />}
+                    </div>
 
-                    <div className="max-h-0 opacity-0 group-hover:max-h-[300px] group-hover:opacity-100 transition-all duration-700 ease-out overflow-hidden">
-                      <p className="text-stone-200 text-lg leading-relaxed mb-6 border-l-2 border-rust-500 pl-4">
-                        {service.description}
-                      </p>
+                    <div className="mt-auto">
+                      <h3 className="text-3xl lg:text-4xl font-serif text-white mb-6 leading-tight min-w-[200px] drop-shadow-2xl">
+                        {service.title}
+                      </h3>
 
-                      <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium tracking-widest uppercase hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:border-white/40 group-hover/btn:gap-3">
-                        <span>Explore Service</span>
-                        <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                      </button>
+                      <div className="max-h-0 opacity-0 group-hover:max-h-[400px] group-hover:opacity-100 transition-all duration-700 ease-out overflow-hidden">
+                        <p className="text-white/80 text-lg leading-relaxed mb-8 border-l-2 border-theme-accent pl-6 max-w-md">
+                          {service.description}
+                        </p>
+
+                        <button className="inline-flex items-center gap-4 px-8 py-4 rounded-sm bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[10px] font-bold tracking-[0.25em] uppercase hover:bg-theme-accent transition-all duration-500 hover:scale-105 group/btn shadow-2xl">
+                          <span>Explore Project</span>
+                          <span className="transition-transform duration-500 group-hover/btn:translate-x-2">→</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

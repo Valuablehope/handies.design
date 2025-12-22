@@ -14,9 +14,8 @@ export const Navigation: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Portfolio', href: '#portfolio' },
     { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
+    { name: 'Roadmap', href: '#roadmap' },
     { name: 'About', href: '#about' },
   ];
 
@@ -27,23 +26,27 @@ export const Navigation: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
-        <a href="#" className="flex items-center group relative">
-          <div className="relative">
-            {/* Soft glow effect on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-rust-500/20 to-stone-500/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <a href="#" className="flex items-center gap-4 group relative">
+          <div className="relative flex items-center gap-4">
+            {/* New Image Logo */}
+            <div className={`relative h-12 w-12 overflow-hidden rounded-sm transition-all duration-500 ${isScrolled ? 'shadow-lg scale-90' : 'shadow-2xl'}`}>
+              <img
+                src="/images/studio-logo.png"
+                alt="Handies Studio"
+                className="w-full h-full object-contain"
+              />
+              <div className="absolute inset-0 bg-theme-accent/5 mix-blend-overlay group-hover:opacity-0 transition-opacity" />
+            </div>
 
-            {/* Logo image */}
-            <img
-              src="/images/logo.png"
-              alt="Handies Design"
-              className={`relative h-12 w-auto transition-all duration-500 rounded-md ${isScrolled
-                  ? 'shadow-md group-hover:shadow-xl'
-                  : 'shadow-lg group-hover:shadow-2xl'
-                } group-hover:scale-105`}
-            />
-
-            {/* Subtle gradient overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/5 to-white/0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {/* Text Logo */}
+            <div className="flex flex-col leading-tight">
+              <span className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${isScrolled ? 'text-theme-text' : 'text-white'}`}>
+                handies<span className="text-theme-accent">.</span>design
+              </span>
+              <span className={`text-[9px] uppercase tracking-[0.4em] font-semibold transition-colors duration-500 ${isScrolled ? 'text-theme-secondary opacity-60' : 'text-stone-300 opacity-80'}`}>
+                Architectural Curation
+              </span>
+            </div>
           </div>
         </a>
 
@@ -53,56 +56,60 @@ export const Navigation: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium tracking-wide hover:text-rust-600 transition-colors duration-300 ${isScrolled ? 'text-stone-600' : 'text-stone-200 hover:text-white mix-blend-difference'
+              className={`text-sm font-medium tracking-wide hover:text-theme-accent transition-colors duration-300 ${isScrolled ? 'text-theme-text font-semibold' : 'text-stone-200 hover:text-white mix-blend-difference'
                 }`}
             >
               {link.name}
             </a>
           ))}
           <a
-            href="#contact"
+            href="https://wa.me/96170228056"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-300 rounded-sm ${isScrolled
-              ? 'bg-stone-900 text-white hover:bg-stone-800 shadow-md hover:shadow-lg'
+              ? 'bg-theme-text text-theme-bg hover:bg-theme-secondary shadow-md hover:shadow-lg'
               : 'bg-white text-stone-900 hover:bg-stone-50 shadow-lg'
               }`}
           >
-            Start Project <ArrowRight size={14} />
+            Chat with us <ArrowRight size={14} />
           </a>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden z-50 text-stone-900 transition-colors"
+          className={`md:hidden z-50 transition-colors ${isScrolled ? 'text-theme-text' : 'text-stone-50 mix-blend-difference'}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <X size={28} className="text-stone-900" />
+            <X size={28} className="text-theme-text" />
           ) : (
-            <Menu size={28} className={isScrolled ? 'text-stone-900' : 'text-stone-50 mix-blend-difference'} />
+            <Menu size={28} />
           )}
         </button>
       </div>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-stone-50/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in">
+        <div className="fixed inset-0 bg-theme-bg/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in">
           {navLinks.map((link, index) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-4xl font-serif text-stone-800 hover:text-rust-600 transition-colors animate-fade-in-up"
+              className="text-4xl font-serif text-theme-text hover:text-theme-accent transition-colors animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {link.name}
             </a>
           ))}
           <a
-            href="#contact"
+            href="https://wa.me/96170228056"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-8 px-10 py-5 bg-stone-900 text-white text-lg font-medium tracking-wide shadow-xl animate-fade-in-up delay-300 rounded-sm"
+            className="mt-8 px-10 py-5 bg-theme-text text-theme-bg text-lg font-medium tracking-wide shadow-xl animate-fade-in-up delay-300 rounded-sm"
           >
-            Get in Touch
+            Contact WhatsApp
           </a>
         </div>
       )}

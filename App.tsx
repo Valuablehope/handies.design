@@ -1,11 +1,13 @@
 import React from 'react';
 import { Navigation } from './components/Navigation';
 import { Hero } from './components/Hero';
+import { PaletteShowcase } from './components/PaletteShowcase';
 import { Services } from './components/Services';
-import { Portfolio } from './components/Portfolio';
-import { Process } from './components/Process';
+import { PhotoStrip } from './components/PhotoStrip';
+import { DesignReality } from './components/DesignReality';
+
 import { About } from './components/About';
-import { Contact } from './components/Contact';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { Footer } from './components/Footer';
 
 const App: React.FC = () => {
@@ -14,12 +16,13 @@ const App: React.FC = () => {
       <Navigation />
       <main>
         <Hero />
+        <PaletteShowcase />
         <About />
         <Services />
-        <Portfolio />
-        <Process />
-        <Contact />
+        <DesignReality />
+        <PhotoStrip />
       </main>
+      <WhatsAppButton />
       <Footer />
     </div>
   );

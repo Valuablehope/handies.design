@@ -1,20 +1,4 @@
-export enum DesignStyle {
-  All = 'All',
-  Industrial = 'Industrial',
-  Minimalist = 'Minimalist',
-  Scandinavian = 'Scandinavian',
-  Luxury = 'Luxury',
-  Commercial = 'Commercial'
-}
 
-export interface Project {
-  id: string;
-  title: string;
-  category: DesignStyle;
-  description: string;
-  imageUrl: string;
-  year: string;
-}
 
 export interface Service {
   id: string;
