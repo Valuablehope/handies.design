@@ -31,13 +31,10 @@ export const DesignReality: React.FC = () => {
     const [activeCard, setActiveCard] = useState<number>(0);
 
     return (
-        <section id="roadmap" className="py-32 bg-theme-bg text-theme-text overflow-hidden relative z-30 shadow-[0_-45px_100px_-20px_rgba(0,0,0,0.3)] transition-colors duration-1000">
+        <section id="roadmap" className="py-32 text-theme-text overflow-hidden relative z-30 transition-colors duration-1000" style={{ background: `linear-gradient(to bottom, var(--theme-bg) 0%, #e7e5e4 100%)` }}>
             {/* Subtle Paper Texture Overlay - Consistent Across Studio */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
-
-            {/* Merge Gradient */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/[0.03] to-transparent pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
                 {/* Section Header - Editorial Style */}
@@ -52,18 +49,6 @@ export const DesignReality: React.FC = () => {
                         <div className="w-12 h-[1px] bg-theme-text/20" />
                         <p className="text-theme-secondary font-serif italic text-lg leading-relaxed">
                             "Embrace the peaks and valleys, the quiet moments and the thrill of exploration. Each step forward takes us closer to the unknown, yet closer to ourselves. The journey is vast, the path is yours - let's wander, wonder, and discover together."
-                        </p>
-                    </div>
-                </div>
-
-                {/* Description Text Above All Containers */}
-                <div className="mb-8 flex justify-center">
-                    <div className="bg-theme-surface border border-theme-text/10 rounded-[7px] p-6 shadow-sm animate-fade-in-up max-w-2xl">
-                        <h3 className="text-2xl md:text-3xl font-serif text-theme-text mb-3 text-center">
-                            {journeyPhases[activeCard].title}
-                        </h3>
-                        <p className="text-theme-secondary font-serif italic text-base leading-relaxed text-center">
-                            {journeyPhases[activeCard].description}
                         </p>
                     </div>
                 </div>

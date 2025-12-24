@@ -2,7 +2,7 @@ import React from 'react';
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-32 bg-theme-bg overflow-hidden relative z-0 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.05)] transition-colors duration-1000">
+    <section id="about" className="py-32 overflow-hidden relative z-0 transition-colors duration-1000" style={{ background: `linear-gradient(to bottom, var(--theme-bg) 0%, #e7e5e4 100%)` }}>
       {/* Subtle Paper Texture Overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />

@@ -89,10 +89,10 @@ export const Navigation: React.FC = () => {
 
             {/* Text Logo */}
             <div className="flex flex-col leading-tight">
-              <span className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${isMobileMenuOpen || isScrolled ? 'text-white' : 'text-white'}`}>
+              <span className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${isMobileMenuOpen ? 'text-white' : isScrolled ? 'text-theme-text' : 'text-white'}`}>
                 handies<span className="text-theme-accent">.</span>design
               </span>
-              <span className={`text-[9px] uppercase tracking-[0.4em] font-semibold transition-colors duration-500 ${isMobileMenuOpen || isScrolled ? 'text-stone-200 opacity-90' : 'text-stone-300 opacity-80'}`}>
+              <span className={`text-[9px] uppercase tracking-[0.4em] font-semibold transition-colors duration-500 ${isMobileMenuOpen ? 'text-stone-200 opacity-90' : isScrolled ? 'text-theme-secondary opacity-60' : 'text-stone-300 opacity-80'}`}>
                 Architectural Curation
               </span>
             </div>

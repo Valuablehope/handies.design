@@ -28,13 +28,10 @@ const carouselImages = [...images, ...images, ...images, ...images];
 
 export const PhotoStrip: React.FC = () => {
     return (
-        <section className="py-32 bg-theme-bg overflow-hidden relative z-40 shadow-[0_-60px_120px_-30px_rgba(0,0,0,0.35)] transition-all duration-1000">
+        <section className="py-32 overflow-hidden relative z-40 transition-all duration-1000" style={{ background: `linear-gradient(to bottom, #e7e5e4 0%, var(--theme-bg) 100%)` }}>
             {/* Consistent Paper Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
-
-            {/* Merge Gradient */}
-            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/[0.04] to-transparent pointer-events-none" />
 
             <div className="max-w-[1800px] mx-auto px-6 md:px-12 relative z-10">
 

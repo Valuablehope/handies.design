@@ -1,86 +1,117 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Instagram, MessageCircle, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="py-16 bg-theme-bg overflow-hidden relative z-50 shadow-[0_-20px_50px_rgba(0,0,0,0.05)] transition-colors duration-1000">
+    <footer className="py-12 overflow-hidden relative z-50 transition-colors duration-1000" style={{ backgroundColor: 'var(--theme-secondary)' }}>
       {/* Ultra-Subtle Paper Texture */}
-      <div className="absolute inset-0 opacity-[0.015] pointer-events-none"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+        <div className="absolute inset-0 opacity-[0.015] pointer-events-none"
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
 
-      <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+          {/* Scroll to Top Button - Top Right */}
+          {showScrollTop && (
+            <button
+              onClick={scrollToTop}
+              className="absolute top-0 right-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp size={18} />
+            </button>
+          )}
 
-        {/* COMPACT TOP: IDENTITY & MAIN NAV */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 pb-12 border-b border-stone-100">
-          <div className="flex items-baseline gap-6 border-l-2 border-theme-accent pl-6">
-            <span className="text-2xl font-serif text-theme-text tracking-tighter">
-              handies<span className="text-theme-accent">.</span>design
-            </span>
-            <span className="text-[9px] uppercase tracking-[0.4em] text-theme-secondary/30 font-bold hidden sm:block">
-              Architectural & Interior Studio
-            </span>
+          {/* Upper Section */}
+          <div className="flex flex-col lg:flex-row justify-between gap-12 pb-8 border-b border-white/10">
+            {/* Left Side: Brand & Social */}
+            <div className="flex-1">
+              <h3 className="text-3xl md:text-4xl font-serif italic font-bold text-white mb-4">
+                handies<span className="text-theme-accent">.</span>design
+              </h3>
+              <p className="text-white/80 text-sm font-serif leading-relaxed mb-6 max-w-md">
+                Where raw edge meets refined comfort. We fuse industrial bones with modern soul to create bespoke environments that resonate with the occupant's internal frequency.
+              </p>
+              {/* Social Media Icons */}
+              <div className="flex items-center gap-4">
+                <a 
+                  href="https://www.instagram.com/handies.design/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-white transition-colors" 
+                  aria-label="Instagram"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a 
+                  href="https://wa.me/96170228056" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-white transition-colors" 
+                  aria-label="WhatsApp"
+                >
+                  <MessageCircle size={20} />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Side: Navigation & Utility Links */}
+            <div className="flex flex-col lg:items-end gap-6">
+              {/* Navigation Links */}
+              <nav>
+                <ul className="flex flex-wrap gap-6 lg:justify-end">
+                  {[
+                    { name: 'Home', href: '#' },
+                    { name: 'About', href: '#about' },
+                    { name: 'Projects', href: '#services' },
+                    { name: 'Services', href: '#services' },
+                    { name: 'Contact', href: 'https://wa.me/96170228056' }
+                  ].map((item) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        className={`text-sm font-medium tracking-wide transition-colors ${
+                          item.name === 'Home'
+                            ? 'text-theme-accent'
+                            : 'text-white/80 hover:text-white'
+                        }`}
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* Utility Links */}
+              <div className="flex flex-wrap gap-4 text-xs text-white/60">
+                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-white transition-colors">Terms Of Services</a>
+                <a href="#" className="hover:text-white transition-colors">Cookie Settings</a>
+              </div>
+            </div>
           </div>
 
-          <nav>
-            <ul className="flex flex-wrap gap-8 md:gap-12">
-              {['Philosophy', 'Expertise', 'Process', 'Gallery'].map((item) => (
-                <li key={item}>
-                  <a href={`#${item.toLowerCase().replace(' ', '-')}`} className="text-xs uppercase tracking-widest font-bold text-theme-text hover:text-theme-accent transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-
-        {/* COMPACT MIDDLE: REGISTRY & CONNECT */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-12 items-center">
-
-          {/* Headquarters */}
-          <div className="flex items-center gap-4">
-            <span className="text-[8px] uppercase tracking-[0.3em] font-bold text-theme-secondary/40">HQ</span>
-            <p className="text-[11px] font-serif italic text-theme-secondary">
-              Beirut, Lebanon — Studio 4B, District 8
+          {/* Lower Section: Copyright */}
+          <div className="pt-8 text-center">
+            <p className="text-white/60 text-sm">
+              @{new Date().getFullYear()}. All Right Reserved handies.design
             </p>
           </div>
-
-          {/* Contact Dispatch */}
-          <div className="flex md:justify-center">
-            <a href="mailto:hello@handies.design" className="text-xs font-serif italic text-theme-text hover:text-theme-accent transition-colors border-b border-theme-text/10 pb-0.5">
-              hello@handies.design
-            </a>
-          </div>
-
-          {/* Social Quick-Links */}
-          <div className="flex md:justify-end gap-6 text-[9px] uppercase tracking-widest font-bold">
-            <a href="#" className="text-theme-text/40 hover:text-theme-accent transition-colors">Instagram</a>
-            <a href="#" className="text-theme-text/40 hover:text-theme-accent transition-colors">Behance</a>
-            <a href="https://wa.me/96170228056" target="_blank" className="text-theme-accent">WhatsApp</a>
-          </div>
         </div>
-
-        {/* COMPACT BOTTOM: STATUS & LEGAL */}
-        <div className="pt-8 border-t border-stone-100 grid grid-cols-1 md:grid-cols-3 items-center gap-6">
-          <div className="text-[8px] uppercase tracking-[0.3em] font-bold text-theme-secondary/20 order-2 md:order-1 text-center md:text-left">
-            © {new Date().getFullYear()} Handies Studio
-          </div>
-
-          <div className="flex items-center justify-center gap-2 order-1 md:order-2">
-            <span className="text-[7px] uppercase tracking-[0.4em] font-bold opacity-20">Digital Execution:</span>
-            <a
-              href="https://www.cubiq-solutions.com/"
-              target="_blank"
-              className="text-[9px] font-serif italic text-theme-text/60 hover:text-theme-text transition-colors"
-            >
-              Cubiq Solutions
-            </a>
-          </div>
-
-          <div className="text-[8px] uppercase tracking-[0.3em] font-bold text-theme-secondary/20 order-3 text-center md:text-right">
-            All Rights Reserved
-          </div>
-        </div>
-      </div>
     </footer>
   );
 };
