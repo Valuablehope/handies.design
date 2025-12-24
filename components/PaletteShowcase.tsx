@@ -115,7 +115,7 @@ export const PaletteShowcase: React.FC = () => {
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
 
-            <div className="max-w-[1400px] mx-auto px-8 md:px-16 relative z-10">
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-16 relative z-10">
 
                 {/* COMPACT TOP: IDENTITY & DESCRIPTION */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
@@ -148,33 +148,34 @@ export const PaletteShowcase: React.FC = () => {
                 {/* COMPACT SLIDER AREA */}
                 <div className="relative">
 
-                    <div className="flex items-center justify-between gap-6 md:gap-16 relative z-20">
+                    <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-16 relative z-20">
                         {/* Control: Prev */}
                         <button
                             onClick={prev}
-                            className="p-4 md:p-6 rounded-full border border-theme-text/5 hover:border-theme-accent text-theme-text hover:text-theme-accent transition-all group shrink-0"
+                            className="p-2 sm:p-3 md:p-6 rounded-full border border-theme-text/5 hover:border-theme-accent text-theme-text hover:text-theme-accent transition-all group shrink-0"
+                            aria-label="Previous atmosphere"
                         >
-                            <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+                            <ChevronLeft size={20} className="sm:w-6 sm:h-6 md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
                         </button>
 
                         {/* COMPACT DISPLAY: NAME + PALETTE */}
-                        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16 w-full py-4">
+                        <div className="flex flex-col md:flex-row items-center gap-4 sm:gap-6 md:gap-16 flex-1 min-w-0 py-4 px-2 sm:px-4">
 
                             {/* Atmosphere Name Primary */}
-                            <div className="flex-1 text-center md:text-left">
+                            <div className="flex-1 text-center md:text-left min-w-0">
                                 <span className="text-[9px] uppercase tracking-[0.5em] text-theme-secondary/40 font-bold block mb-2">Active Atmosphere</span>
-                                <h3 className="text-6xl md:text-8xl font-serif text-theme-text tracking-tighter leading-none italic animate-fade-in-down">
+                                <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-serif text-theme-text tracking-tighter leading-none italic animate-fade-in-down">
                                     {activeAtmosphere.name}
                                 </h3>
                             </div>
 
                             {/* Symmetrical Palette beside name */}
-                            <div className="flex md:flex-row gap-4 px-6 py-4 bg-white/30 backdrop-blur-md rounded-full border border-theme-text/5 shadow-sm">
+                            <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 py-3 sm:py-4 bg-white/30 backdrop-blur-md rounded-full border border-theme-text/5 shadow-sm shrink-0">
                                 {activeAtmosphere.display.map((color, i) => (
                                     <div key={i} className="relative group/color">
                                         <div
                                             style={{ backgroundColor: color }}
-                                            className="w-12 h-12 rounded-full border-2 border-white shadow-lg transition-transform duration-500 group-hover/color:scale-110"
+                                            className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full border-2 border-white shadow-lg transition-transform duration-500 group-hover/color:scale-110"
                                         />
                                         <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/color:opacity-100 transition-opacity whitespace-nowrap">
                                             <span className="text-[8px] font-mono font-bold text-theme-secondary bg-white px-1.5 py-0.5 rounded-sm border border-stone-100 shadow-sm">{color}</span>
@@ -188,9 +189,10 @@ export const PaletteShowcase: React.FC = () => {
                         {/* Control: Next */}
                         <button
                             onClick={next}
-                            className="p-4 md:p-6 rounded-full border border-theme-text/5 hover:border-theme-accent text-theme-text hover:text-theme-accent transition-all group shrink-0"
+                            className="p-2 sm:p-3 md:p-6 rounded-full border border-theme-text/5 hover:border-theme-accent text-theme-text hover:text-theme-accent transition-all group shrink-0"
+                            aria-label="Next atmosphere"
                         >
-                            <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                            <ChevronRight size={20} className="sm:w-6 sm:h-6 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>
 

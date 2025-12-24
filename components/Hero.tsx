@@ -1,13 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 
 export const Hero: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Ensure video plays on mobile devices
+    const playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Autoplay started successfully
+        })
+        .catch((error) => {
+          // Autoplay was prevented, try again on user interaction
+          const handleUserInteraction = () => {
+            video.play().catch(() => {});
+            document.removeEventListener('touchstart', handleUserInteraction);
+            document.removeEventListener('click', handleUserInteraction);
+          };
+          
+          document.addEventListener('touchstart', handleUserInteraction, { once: true });
+          document.addEventListener('click', handleUserInteraction, { once: true });
+        });
+    }
+  }, []);
+
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 overflow-hidden">
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
