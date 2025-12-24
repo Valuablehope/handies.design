@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { getImagePath } from '../utils/images';
 
 export const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -80,7 +81,7 @@ export const Navigation: React.FC = () => {
             {/* New Image Logo */}
             <div className={`relative h-12 w-12 overflow-hidden rounded-[7px] transition-all duration-500 ${isScrolled ? 'shadow-lg scale-90' : 'shadow-2xl'}`}>
               <img
-                src="/images/studio-logo.png"
+                src={getImagePath('/images/studio-logo.png')}
                 alt="Handies Studio"
                 className="w-full h-full object-contain"
               />

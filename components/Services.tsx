@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Ruler, Hammer, Box, LayoutTemplate, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Service } from '../types';
+import { getImagePath } from '../utils/images';
 
 // Generate 5 gallery images for each service
 const generateGalleryImages = (serviceId: string, baseImageUrl: string): string[] => {
@@ -14,21 +15,21 @@ const generateGalleryImages = (serviceId: string, baseImageUrl: string): string[
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
     ],
     '2': [
-      '/images/custom-furniture.jpg',
+      getImagePath('/images/custom-furniture.jpg'),
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2058&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1551292831-023188e78222?q=80&w=2070&auto=format&fit=crop',
     ],
     '3': [
-      '/images/3d-modelling.png',
+      getImagePath('/images/3d-modelling.png'),
       'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?q=80&w=2074&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2058&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2032&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop',
     ],
     '4': [
-      '/images/interior-styling.jpg',
+      getImagePath('/images/interior-styling.jpg'),
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2058&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?q=80&w=2070&auto=format&fit=crop',
@@ -53,21 +54,21 @@ const services: Service[] = [
     title: 'Custom Furniture',
     description: 'Bespoke pieces designed and crafted to fit your space perfectly. From industrial steel to warm teak.',
     iconName: 'Box',
-    imageUrl: '/images/custom-furniture.jpg',
+    imageUrl: getImagePath('/images/custom-furniture.jpg'),
   },
   {
     id: '3',
     title: '3D Modelling',
     description: 'Visualize your future space before a single brick is laid. High-fidelity renders and walkthroughs.',
     iconName: 'LayoutTemplate',
-    imageUrl: '/images/3d-modelling.png',
+    imageUrl: getImagePath('/images/3d-modelling.png'),
   },
   {
     id: '4',
     title: 'Interior Styling',
     description: 'The final layer. Curating textiles, art, and lighting to transform a house into a home.',
     iconName: 'Ruler',
-    imageUrl: '/images/interior-styling.jpg',
+    imageUrl: getImagePath('/images/interior-styling.jpg'),
   },
 ];
 

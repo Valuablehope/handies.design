@@ -1,23 +1,24 @@
 import React from 'react';
+import { getImagePath } from '../utils/images';
 
 const images = [
     {
-        url: '/images/interior_design_1.png',
+        url: getImagePath('/images/interior_design_1.png'),
         title: 'Minimalist Sanctuary',
         caption: 'Alpha Frame 01',
     },
     {
-        url: '/images/interior_design_2.png',
+        url: getImagePath('/images/interior_design_2.png'),
         title: 'Mid-Century Soul',
         caption: 'Beta Frame 02',
     },
     {
-        url: '/images/interior_design_3.png',
+        url: getImagePath('/images/interior_design_3.png'),
         title: 'Monolithic Elegance',
         caption: 'Gamma Frame 03',
     },
     {
-        url: '/images/interior_design_4.png',
+        url: getImagePath('/images/interior_design_4.png'),
         title: 'Nocturnal Peace',
         caption: 'Delta Frame 04',
     },

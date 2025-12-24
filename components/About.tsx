@@ -1,4 +1,5 @@
 import React from 'react';
+import { getImagePath } from '../utils/images';
 
 export const About: React.FC = () => {
   return (
@@ -71,7 +72,7 @@ export const About: React.FC = () => {
               <div className="relative">
                 <div className="w-full grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-1000">
                   <img
-                    src="/images/about-studio.jpg"
+                    src={getImagePath('/images/about-studio.jpg')}
                     alt="Handies Studio Design"
                     className="w-full object-cover shadow-inner"
                   />

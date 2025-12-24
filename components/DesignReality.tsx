@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
+import { getImagePath } from '../utils/images';
 
 const journeyPhases = [
     {
         id: 'raw',
         title: 'Raw Idea',
         description: 'The initial spark. We begin with a blank canvas and your abstract desires, translating them into the first spatial logic.',
-        image: '/images/sketch.png',
+        image: getImagePath('/images/sketch.png'),
     },
     {
         id: 'map',
         title: 'Raw Map',
         description: 'The blueprint. We define the flow, the light, and the boundaries. Every line here is a future moment of your life.',
-        image: '/images/moodboard.png',
+        image: getImagePath('/images/moodboard.png'),
     },
     {
         id: 'render',
         title: 'Rendered Design',
         description: 'The digital twin. High-fidelity 3D visualizations that let you walk through your future home before a single nail is driven.',
-        image: '/images/3d-modelling.png',
+        image: getImagePath('/images/3d-modelling.png'),
     },
     {
         id: 'reality',
         title: 'Reality',
         description: 'The final reveal. The physical manifest of our joint vision. A space that is not just built, but composed.',
-        image: '/images/interior_design_1.png',
+        image: getImagePath('/images/interior_design_1.png'),
     },
 ];
 
