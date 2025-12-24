@@ -32,7 +32,7 @@ export const About: React.FC = () => {
 
         {/* Main Headline */}
         <div className="text-center mb-20">
-          <h2 className="text-[10vw] lg:text-[9rem] font-serif text-theme-text leading-[0.85] mb-8 tracking-tighter">
+          <h2 className="text-[6vw] lg:text-[5rem] font-serif text-theme-text leading-[0.85] mb-8 tracking-tighter">
             THE ARCHITECTURE <br />
             <span className="italic font-light">of </span>
             <span className="text-theme-accent italic">FEELING</span>

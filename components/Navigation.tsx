@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 
 export const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuOverlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,13 +14,47 @@ export const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle Global Background Blur and Scroll Lock
+  // Handle scroll lock when menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.documentElement.classList.add('menu-open');
+      document.body.style.overflow = 'hidden';
     } else {
       document.documentElement.classList.remove('menu-open');
+      document.body.style.overflow = '';
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isMobileMenuOpen]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        isMobileMenuOpen &&
+        menuOverlayRef.current &&
+        !menuOverlayRef.current.contains(e.target as Node) &&
+        !(e.target as HTMLElement).closest('button')
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMobileMenuOpen]);
 
   const navLinks = [
@@ -30,8 +65,13 @@ export const Navigation: React.FC = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'glass-nav-scrolled py-4' : 'bg-transparent py-8'
-        }`}
+      className={`fixed w-full z-50 transition-all duration-500 ease-in-out ${
+        isMobileMenuOpen 
+          ? 'bg-theme-surface/95 backdrop-blur-xl py-4 shadow-lg' 
+          : isScrolled 
+            ? 'glass-nav-scrolled py-4' 
+            : 'bg-transparent py-8'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
@@ -49,10 +89,10 @@ export const Navigation: React.FC = () => {
 
             {/* Text Logo */}
             <div className="flex flex-col leading-tight">
-              <span className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${isScrolled ? 'text-theme-text' : 'text-white'}`}>
+              <span className={`text-2xl font-bold tracking-tight transition-colors duration-500 ${isMobileMenuOpen || isScrolled ? 'text-white' : 'text-white'}`}>
                 handies<span className="text-theme-accent">.</span>design
               </span>
-              <span className={`text-[9px] uppercase tracking-[0.4em] font-semibold transition-colors duration-500 ${isScrolled ? 'text-theme-secondary opacity-60' : 'text-stone-300 opacity-80'}`}>
+              <span className={`text-[9px] uppercase tracking-[0.4em] font-semibold transition-colors duration-500 ${isMobileMenuOpen || isScrolled ? 'text-stone-200 opacity-90' : 'text-stone-300 opacity-80'}`}>
                 Architectural Curation
               </span>
             </div>
@@ -75,9 +115,9 @@ export const Navigation: React.FC = () => {
             href="https://wa.me/96170228056"
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-300 rounded-sm ${isScrolled
+            className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-300 rounded-[7px] ${isScrolled
               ? 'bg-theme-text text-theme-bg hover:bg-theme-accent shadow-md hover:shadow-lg'
-              : 'bg-white text-theme-text hover:bg-stone-50 shadow-lg'
+              : 'bg-white/80 backdrop-blur-md border border-white/20 text-theme-text hover:bg-white/90 shadow-lg'
               }`}
           >
             Chat with us <ArrowRight size={14} />
@@ -86,8 +126,14 @@ export const Navigation: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button
-          className={`md:hidden z-50 transition-colors ${isScrolled ? 'text-theme-text' : 'text-stone-50 mix-blend-difference'}`}
+          className={`md:hidden relative z-[70] p-2 -mr-2 transition-all duration-300 ${
+            isMobileMenuOpen || isScrolled
+              ? 'text-theme-text'
+              : 'text-white'
+          }`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
         >
           {isMobileMenuOpen ? (
             <X size={28} className="text-theme-text" />
@@ -99,33 +145,39 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-theme-bg/80 backdrop-blur-3xl z-40 flex flex-col items-center justify-center space-y-12 animate-fade-in">
+        <div
+          ref={menuOverlayRef}
+          className="mobile-menu-overlay fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-[60] flex flex-col items-center justify-center space-y-8 px-6 pt-20 pb-20"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
+        >
           {/* Subtle Atmospheric Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-theme-accent/5 rounded-full blur-[140px] pointer-events-none" />
 
           {navLinks.map((link, index) => (
-            <div key={link.name} className="relative group w-full flex justify-center max-w-[320px]">
-              {/* Permanent Glass Pill Background for Legibility */}
-              <div className="absolute -inset-x-6 -inset-y-3 bg-theme-surface/40 backdrop-blur-md border border-theme-text/5 rounded-full shadow-sm transition-all duration-500 group-hover:bg-theme-surface/60 group-hover:border-theme-accent/20 group-hover:scale-110 -z-10" />
-
+            <div
+              key={link.name}
+              className="relative group w-full flex justify-center max-w-[320px]"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               <a
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-4xl font-serif text-theme-text hover:text-theme-accent transition-all duration-500 animate-fade-in-up py-1"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="w-full text-4xl font-serif text-white hover:text-stone-100 transition-all duration-300 animate-fade-in-up py-6 px-8 relative z-10 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/20 shadow-lg hover:bg-white/10 hover:border-white/30 hover:scale-[1.02] block text-center"
               >
                 {link.name}
               </a>
             </div>
           ))}
 
-          <div className="pt-12 animate-fade-in-up delay-300">
+          <div className="pt-8 animate-fade-in-up" style={{ animationDelay: `${navLinks.length * 100}ms` }}>
             <a
               href="https://wa.me/96170228056"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="px-10 py-5 bg-theme-text text-theme-bg text-[11px] font-bold tracking-[0.5em] uppercase shadow-2xl rounded-sm hover:bg-theme-accent transition-all duration-500 block text-center"
+              className="px-10 py-5 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[11px] font-bold tracking-[0.5em] uppercase shadow-2xl rounded-2xl hover:bg-white/20 hover:border-white/30 transition-all duration-300 block text-center"
             >
               Dispatch Inquiry
             </a>
