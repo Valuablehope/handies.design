@@ -105,11 +105,46 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Lower Section: Copyright */}
-          <div className="pt-8 text-center">
+          {/* Lower Section: Copyright & Developer Credit */}
+          <div className="pt-8 flex flex-col items-center gap-4">
             <p className="text-white/60 text-sm">
               @{new Date().getFullYear()}. All Right Reserved handies.design
             </p>
+            <div className="flex items-center gap-2 text-white/60 text-sm">
+              <span>Developed by</span>
+              <a 
+                href="https://www.cubiq-solutions.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-white/60 hover:text-white/80 transition-colors"
+                aria-label="Cubiq Solutions"
+              >
+                {/* Cubiq Solutions Logo - Blue Diamond with Chevrons */}
+                <svg 
+                  viewBox="0 0 40 40" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="w-6 h-6 text-blue-600"
+                >
+                  <path 
+                    d="M18 8L6 20L18 32" 
+                    stroke="currentColor" 
+                    strokeWidth="3.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                  <path 
+                    d="M22 8L34 20L22 32" 
+                    stroke="currentColor" 
+                    strokeWidth="3.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="font-bold">Cubiq</span>
+                <span className="font-normal">Solutions</span>
+              </a>
+            </div>
           </div>
         </div>
     </footer>
