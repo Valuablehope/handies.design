@@ -12,18 +12,20 @@ import { Footer } from './components/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-stone-50 font-sans text-stone-900">
+    <div className="min-h-screen bg-stone-50 font-sans text-stone-900 overflow-x-hidden">
       <Navigation />
-      <main>
-        <Hero />
-        <PaletteShowcase />
-        <About />
-        <Services />
-        <DesignReality />
-        <PhotoStrip />
-      </main>
-      <WhatsAppButton />
-      <Footer />
+      <div id="app-content">
+        <main>
+          <Hero />
+          <PaletteShowcase />
+          <About />
+          <Services />
+          <DesignReality />
+          <PhotoStrip />
+        </main>
+        <WhatsAppButton />
+        <Footer />
+      </div>
     </div>
   );
 };

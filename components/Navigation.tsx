@@ -13,10 +13,19 @@ export const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle Global Background Blur and Scroll Lock
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.documentElement.classList.add('menu-open');
+    } else {
+      document.documentElement.classList.remove('menu-open');
+    }
+  }, [isMobileMenuOpen]);
+
   const navLinks = [
     { name: 'Services', href: '#services' },
     { name: 'Roadmap', href: '#roadmap' },
-    { name: 'About', href: '#about' },
+    { name: 'Philosophy', href: '#about' },
   ];
 
   return (
@@ -29,7 +38,7 @@ export const Navigation: React.FC = () => {
         <a href="#" className="flex items-center gap-4 group relative">
           <div className="relative flex items-center gap-4">
             {/* New Image Logo */}
-            <div className={`relative h-12 w-12 overflow-hidden rounded-sm transition-all duration-500 ${isScrolled ? 'shadow-lg scale-90' : 'shadow-2xl'}`}>
+            <div className={`relative h-12 w-12 overflow-hidden rounded-[7px] transition-all duration-500 ${isScrolled ? 'shadow-lg scale-90' : 'shadow-2xl'}`}>
               <img
                 src="/images/studio-logo.png"
                 alt="Handies Studio"
@@ -67,8 +76,8 @@ export const Navigation: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-300 rounded-sm ${isScrolled
-              ? 'bg-theme-text text-theme-bg hover:bg-theme-secondary shadow-md hover:shadow-lg'
-              : 'bg-white text-stone-900 hover:bg-stone-50 shadow-lg'
+              ? 'bg-theme-text text-theme-bg hover:bg-theme-accent shadow-md hover:shadow-lg'
+              : 'bg-white text-theme-text hover:bg-stone-50 shadow-lg'
               }`}
           >
             Chat with us <ArrowRight size={14} />
@@ -90,27 +99,37 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-theme-bg/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 animate-fade-in">
+        <div className="fixed inset-0 bg-theme-bg/80 backdrop-blur-3xl z-40 flex flex-col items-center justify-center space-y-12 animate-fade-in">
+          {/* Subtle Atmospheric Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-theme-accent/5 rounded-full blur-[140px] pointer-events-none" />
+
           {navLinks.map((link, index) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-4xl font-serif text-theme-text hover:text-theme-accent transition-colors animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {link.name}
-            </a>
+            <div key={link.name} className="relative group w-full flex justify-center max-w-[320px]">
+              {/* Permanent Glass Pill Background for Legibility */}
+              <div className="absolute -inset-x-6 -inset-y-3 bg-theme-surface/40 backdrop-blur-md border border-theme-text/5 rounded-full shadow-sm transition-all duration-500 group-hover:bg-theme-surface/60 group-hover:border-theme-accent/20 group-hover:scale-110 -z-10" />
+
+              <a
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-4xl font-serif text-theme-text hover:text-theme-accent transition-all duration-500 animate-fade-in-up py-1"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {link.name}
+              </a>
+            </div>
           ))}
-          <a
-            href="https://wa.me/96170228056"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-8 px-10 py-5 bg-theme-text text-theme-bg text-lg font-medium tracking-wide shadow-xl animate-fade-in-up delay-300 rounded-sm"
-          >
-            Contact WhatsApp
-          </a>
+
+          <div className="pt-12 animate-fade-in-up delay-300">
+            <a
+              href="https://wa.me/96170228056"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-10 py-5 bg-theme-text text-theme-bg text-[11px] font-bold tracking-[0.5em] uppercase shadow-2xl rounded-sm hover:bg-theme-accent transition-all duration-500 block text-center"
+            >
+              Dispatch Inquiry
+            </a>
+          </div>
         </div>
       )}
     </nav>

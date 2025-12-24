@@ -125,12 +125,13 @@ body {
 }
 
 .glass-nav-scrolled {
-    background-color: var(--theme-bg);
+    background-color: var(--theme-surface);
     background-image: radial-gradient(at top left, var(--theme-surface), transparent);
-    opacity: 0.95;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    opacity: 0.98;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--theme-border);
+    transition: all 0.5s ease-in-out;
 }
 
 /* Text Selection */
@@ -177,4 +178,21 @@ html {
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Global Background Blur for Mobile Menu */
+html.menu-open {
+    overflow: hidden;
+}
+
+html.menu-open body>*:not(nav) {
+    filter: blur(20px) brightness(0.6);
+    pointer-events: none;
+    transition: filter 0.5s ease-in-out;
+}
+
+/* Transition for all filters */
+main,
+footer {
+    transition: filter 0.5s ease-in-out;
 }

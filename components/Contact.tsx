@@ -3,104 +3,98 @@ import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white">
+    <section id="contact" className="py-24 bg-theme-bg transition-colors duration-1000">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          
-          <div>
-            <span className="text-rust-700 font-medium tracking-widest uppercase text-xs mb-3 block">Get In Touch</span>
-            <h2 className="text-3xl md:text-5xl font-serif text-stone-900 mb-6 md:mb-8">
-              Let's Build Something <br /> <span className="italic text-stone-500">Extraordinary.</span>
-            </h2>
-            <p className="text-stone-600 mb-8 md:mb-12 max-w-md text-sm md:text-base">
-              Ready to transform your space? Schedule a consultation or send us a message about your upcoming project.
-            </p>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-stone-100 rounded-full text-stone-700">
-                  <Mail size={20} />
+          <div className="space-y-8">
+            <div>
+              <span className="text-theme-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Archive Inquiry</span>
+              <h2 className="text-5xl md:text-7xl font-serif text-theme-text leading-tight tracking-tighter">
+                Let's Build <br /> <span className="italic text-theme-accent">Something.</span>
+              </h2>
+              <p className="text-theme-secondary mt-8 max-w-md font-serif italic text-lg leading-relaxed">
+                Ready to transform your space? Schedule a consultation or send us a message about your upcoming project.
+              </p>
+            </div>
+
+            <div className="space-y-8 pt-8 border-t border-theme-text/10">
+              <div className="flex items-start gap-6">
+                <div className="p-4 bg-theme-surface shadow-sm rounded-full text-theme-accent">
+                  <Mail size={24} />
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-stone-900 uppercase tracking-wide">Email</h4>
-                  <a href="mailto:hello@handies.design" className="text-stone-600 hover:text-rust-600 transition-colors">hello@handies.design</a>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-stone-100 rounded-full text-stone-700">
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-stone-900 uppercase tracking-wide">Phone</h4>
-                  <a href="tel:+1234567890" className="text-stone-600 hover:text-rust-600 transition-colors">+1 (555) 000-0000</a>
+                <div className="space-y-1">
+                  <h4 className="text-[10px] font-bold text-theme-secondary uppercase tracking-[0.3em] opacity-40">Direct Dispatch</h4>
+                  <a href="mailto:hello@handies.design" className="text-lg font-serif italic text-theme-text hover:text-theme-accent transition-colors">hello@handies.design</a>
                 </div>
               </div>
 
-               <div className="flex items-start gap-4">
-                <div className="p-3 bg-stone-100 rounded-full text-stone-700">
-                  <Instagram size={20} />
+              <div className="flex items-start gap-6">
+                <div className="p-4 bg-theme-surface shadow-sm rounded-full text-theme-accent">
+                  <Phone size={24} />
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold text-stone-900 uppercase tracking-wide">Social</h4>
-                  <a href="#" className="text-stone-600 hover:text-rust-600 transition-colors">@handies.design</a>
+                <div className="space-y-1">
+                  <h4 className="text-[10px] font-bold text-theme-secondary uppercase tracking-[0.3em] opacity-40">Voice Archive</h4>
+                  <a href="tel:+96170228056" className="text-lg font-serif italic text-theme-text hover:text-theme-accent transition-colors">+961 70 228 056</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-stone-50 p-6 md:p-12 border border-stone-100 shadow-sm rounded-lg md:rounded-none">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-stone-700">Name</label>
-                  <input 
-                    type="text" 
+          <div className="bg-theme-surface/50 p-8 md:p-16 border border-theme-border/50 shadow-2xl backdrop-blur-sm relative rounded-sm overflow-hidden">
+            {/* Decorative Newsroom Corner */}
+            <div className="absolute top-0 right-0 w-12 h-12 bg-theme-accent/5 rotate-45 translate-x-1/2 -translate-y-1/2" />
+
+            <form className="space-y-8 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label htmlFor="name" className="text-[10px] font-bold text-theme-secondary uppercase tracking-widest opacity-60">Full Identity</label>
+                  <input
+                    type="text"
                     id="name"
-                    className="w-full px-4 py-3 bg-white border border-stone-200 focus:border-stone-900 outline-none transition-colors"
+                    className="w-full px-0 py-3 bg-transparent border-b border-theme-text/10 focus:border-theme-accent outline-none transition-all placeholder:text-theme-secondary/30 font-serif italic"
                     placeholder="John Doe"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-stone-700">Email</label>
-                  <input 
-                    type="email" 
+                <div className="space-y-3">
+                  <label htmlFor="email" className="text-[10px] font-bold text-theme-secondary uppercase tracking-widest opacity-60">Digital Address</label>
+                  <input
+                    type="email"
                     id="email"
-                    className="w-full px-4 py-3 bg-white border border-stone-200 focus:border-stone-900 outline-none transition-colors"
+                    className="w-full px-0 py-3 bg-transparent border-b border-theme-text/10 focus:border-theme-accent outline-none transition-all placeholder:text-theme-secondary/30 font-serif italic"
                     placeholder="john@example.com"
                   />
                 </div>
               </div>
-              
-              <div className="space-y-2">
-                <label htmlFor="service" className="text-sm font-medium text-stone-700">Interested Service</label>
-                <select 
-                  id="service" 
-                  className="w-full px-4 py-3 bg-white border border-stone-200 focus:border-stone-900 outline-none transition-colors"
+
+              <div className="space-y-3">
+                <label htmlFor="service" className="text-[10px] font-bold text-theme-secondary uppercase tracking-widest opacity-60">Strategic Interest</label>
+                <select
+                  id="service"
+                  className="w-full px-0 py-3 bg-transparent border-b border-theme-text/10 focus:border-theme-accent outline-none transition-all font-serif italic appearance-none cursor-pointer"
                 >
-                  <option>Full Renovation</option>
-                  <option>Interior Styling</option>
-                  <option>Custom Furniture</option>
-                  <option>3D Modelling</option>
-                  <option>Other</option>
+                  <option className="bg-theme-bg">Residential Architecture</option>
+                  <option className="bg-theme-bg">Industrial Curation</option>
+                  <option className="bg-theme-bg">Interior Refinement</option>
+                  <option className="bg-theme-bg">Consultation Dispatch</option>
                 </select>
               </div>
 
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-stone-700">Project Details</label>
-                <textarea 
-                  id="message" 
+              <div className="space-y-3">
+                <label htmlFor="message" className="text-[10px] font-bold text-theme-secondary uppercase tracking-widest opacity-60">Design Brief</label>
+                <textarea
+                  id="message"
                   rows={4}
-                  className="w-full px-4 py-3 bg-white border border-stone-200 focus:border-stone-900 outline-none transition-colors"
-                  placeholder="Tell us about your space, timeline, and vision..."
+                  className="w-full px-0 py-3 bg-transparent border-b border-theme-text/10 focus:border-theme-accent outline-none transition-all placeholder:text-theme-secondary/30 font-serif italic resize-none"
+                  placeholder="Describe your vision..."
                 ></textarea>
               </div>
 
-              <button 
+              <button
                 type="submit"
-                className="w-full py-4 bg-stone-900 text-white font-medium tracking-wide hover:bg-stone-800 transition-all hover:shadow-lg"
+                className="w-full py-5 bg-theme-text text-theme-bg font-bold tracking-[0.4em] uppercase hover:bg-theme-accent hover:shadow-[0_20px_40px_-10px_rgba(var(--theme-accent),0.3)] transition-all duration-500 shadow-xl"
               >
-                Send Message
+                Dispatch Message
               </button>
             </form>
           </div>

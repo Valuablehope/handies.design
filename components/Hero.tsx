@@ -44,7 +44,7 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start animate-fade-in-up delay-300 opacity-0">
           <a
             href="#services"
-            className="inline-block min-w-[220px] px-10 py-4 bg-white text-stone-900 font-medium tracking-wide hover:bg-stone-50 hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
+            className="inline-block min-w-[220px] px-10 py-4 bg-white text-theme-text font-medium tracking-wide hover:bg-stone-50 hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
           >
             View Projects
           </a>
@@ -52,7 +52,7 @@ export const Hero: React.FC = () => {
             href="https://wa.me/96170228056"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block min-w-[220px] px-10 py-4 bg-white text-stone-900 font-medium tracking-wide hover:bg-stone-50 hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
+            className="inline-block min-w-[220px] px-10 py-4 bg-white text-theme-text font-medium tracking-wide hover:bg-stone-50 hover:scale-105 transition-all duration-300 text-center shadow-xl hover:shadow-2xl rounded-sm"
           >
             Book Consultation
           </a>
